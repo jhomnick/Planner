@@ -13,7 +13,7 @@
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23284b63'/%3E%3Cpath d='M18 33l9 9 19-20' stroke='%23f6f1e7' stroke-width='7' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,650;0,9..144,800;1,9..144,500;1,9..144,650&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#f6f1e7; --paper:#fffdf8; --ink:#1f1c17; --ink2:#5d574c; --ink3:#8f887b;
@@ -173,21 +173,50 @@ dialog::backdrop{background:rgba(20,15,5,.45)}
   body > *:not(#printSheet){display:none !important}
   #printSheet{display:block !important;position:static;left:auto}
 }
-#printSheet .ps-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #000;padding-bottom:4pt;margin-bottom:8pt}
-#printSheet .ps-head h1{font:650 20pt Fraunces,Georgia,serif;margin:0}
-#printSheet .ps-head div{font-size:8.5pt;color:#444;text-align:right}
-#printSheet .ps-cols{display:grid;grid-template-columns:1.15fr 1fr;gap:14pt}
-#printSheet .ps h2{font:700 8.5pt Inter,Arial;text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid #999;padding-bottom:2pt;margin:0 0 4pt}
-#printSheet .ps{margin-bottom:10pt;break-inside:avoid}
-#printSheet .ps-r{display:flex;gap:6pt;padding:1.6pt 0;border-bottom:.5pt dotted #bbb;align-items:baseline}
-#printSheet .ps-b{width:8pt;height:8pt;border:1pt solid #000;border-radius:2pt;flex:none;position:relative;top:1pt}
-#printSheet .ps-b.x::after{content:"✓";position:absolute;top:-4pt;left:0;font-size:9pt}
-#printSheet .ps-t{width:44pt;flex:none;font-variant-numeric:tabular-nums;color:#333}
-#printSheet .ps-w{font-size:7.5pt;color:#555;margin-left:auto;white-space:nowrap}
+#printSheet,#printSheet *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+#printSheet{--navy:#1f3a52;--sky:#e8f0f6;--red:#b3342a;--rose:#fbe9e6;--grn:#2f6b43;--mint:#e7f3ea;--amb:#a45f0f;--sand:#fbf0dc;--plum:#5b4a8b;--lav:#eeeaf7;--ink:#1d1b18;--mute:#6b665d}
+#printSheet .pb{background:var(--navy);color:#fff;border-radius:10pt;padding:10pt 14pt 9pt;display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:10pt;position:relative;overflow:hidden}
+#printSheet .pb::after{content:"";position:absolute;right:-30pt;top:-40pt;width:130pt;height:130pt;border-radius:50%;background:rgba(255,255,255,.07)}
+#printSheet .pb .kick{font:italic 500 9pt Fraunces,Georgia,serif;letter-spacing:.14em;text-transform:uppercase;opacity:.8}
+#printSheet .pb h1{font:800 24pt/1.02 Fraunces,Georgia,serif;margin:2pt 0 0;letter-spacing:-.01em}
+#printSheet .pb h1 em{font-weight:500;font-style:italic;color:#f3c97a}
+#printSheet .pb .meta{text-align:right;font:italic 400 8pt Inter,Arial,sans-serif;opacity:.85;position:relative;z-index:1}
+#printSheet .pb .meta b{font-style:normal;font-weight:700;display:block;font-size:9.5pt;opacity:1}
+#printSheet .legend{display:flex;gap:10pt;justify-content:flex-end;margin:-4pt 2pt 8pt;font:500 7.5pt Inter,Arial}
+#printSheet .legend > span{display:inline-flex;align-items:center;gap:3pt;color:var(--mute)}
+#printSheet .ps-cols{display:grid;grid-template-columns:1fr 1fr;gap:12pt}
+#printSheet .ps{margin-bottom:9pt;break-inside:avoid;border-radius:8pt;overflow:hidden;border:1pt solid var(--edge,#ddd)}
+#printSheet .ps h2{margin:0;padding:4pt 8pt;font:italic 700 12pt Fraunces,Georgia,serif;color:#fff;background:var(--hc);display:flex;justify-content:space-between;align-items:baseline}
+#printSheet .ps h2 small{font:600 7pt Inter,Arial;letter-spacing:.1em;text-transform:uppercase;opacity:.85;font-style:normal}
+#printSheet .ps .in{padding:3pt 8pt 5pt;background:var(--bgc)}
+#printSheet .s-today{--hc:var(--navy);--bgc:#fff;--edge:#c9d6e2}
+#printSheet .s-pri{--hc:var(--red);--bgc:var(--rose);--edge:#ecc4bd}
+#printSheet .s-over{--hc:#7a1f17;--bgc:#f8dcd6;--edge:#e3aaa0}
+#printSheet .s-next{--hc:var(--grn);--bgc:var(--mint);--edge:#bcd8c4}
+#printSheet .s-dl{--hc:var(--amb);--bgc:var(--sand);--edge:#ead2a6}
+#printSheet .s-note{--hc:var(--plum);--bgc:var(--lav);--edge:#d3cbe8}
+#printSheet .part{font:italic 600 9pt Fraunces,Georgia,serif;color:var(--navy);margin:5pt 0 1pt;border-bottom:1pt solid #c9d6e2;display:flex;justify-content:space-between}
+#printSheet .part span{font:500 7pt Inter,Arial;color:var(--mute);font-style:normal}
+#printSheet .ps-r{display:flex;gap:5pt;padding:1.7pt 0;border-bottom:.5pt dotted rgba(0,0,0,.18);align-items:baseline;font:400 8.8pt/1.25 Inter,Arial,sans-serif;color:var(--ink)}
+#printSheet .ps-r:last-child{border-bottom:0}
+#printSheet .ps-b{width:8pt;height:8pt;border:1.1pt solid #444;border-radius:2pt;flex:none;position:relative;top:1pt;background:#fff}
+#printSheet .ps-b.x{background:var(--grn);border-color:var(--grn)}
+#printSheet .ps-b.x::after{content:"✓";position:absolute;top:-3pt;left:.5pt;font-size:8pt;color:#fff;font-weight:700}
+#printSheet .ps-t{width:40pt;flex:none;font:600 8pt Inter,Arial;font-variant-numeric:tabular-nums;color:var(--navy)}
 #printSheet .ps-hi{font-weight:700}
-#printSheet .ps-day{font-weight:700;margin-top:4pt}
-#printSheet .ps-note{font-size:8pt;border:1px solid #999;min-height:60pt;padding:4pt;color:#777}
-#printSheet .ps-foot{margin-top:6pt;font-size:7.5pt;color:#666;text-align:center}
+#printSheet .star{color:var(--red);font-weight:700}
+#printSheet .ps-work{font-style:italic;color:#4d4a6b}
+#printSheet .ps-rt{color:#3c3a36}
+#printSheet .tag{margin-left:auto;flex:none;font:600 6.8pt Inter,Arial;letter-spacing:.04em;text-transform:uppercase;padding:.8pt 4pt;border-radius:6pt;color:#fff;background:var(--tc)}
+#printSheet .ps-day{font:italic 700 9.5pt Fraunces,Georgia,serif;color:var(--grn);margin:4pt 0 1pt}
+#printSheet .due{font:700 7pt Inter,Arial;letter-spacing:.06em;text-transform:uppercase;color:var(--red)}
+#printSheet .db{flex:none;width:30pt;text-align:center;border-radius:4pt;background:var(--amb);color:#fff;font:700 6.5pt/1.1 Inter,Arial;padding:1.5pt 0;text-transform:uppercase}
+#printSheet .db b{display:block;font:800 10pt/1 Fraunces,Georgia,serif}
+#printSheet .dl-r{align-items:center}
+#printSheet .quiet{font-style:italic;color:var(--mute)}
+#printSheet .ps-note{min-height:92pt;background:repeating-linear-gradient(to bottom,transparent 0 15pt,#c8bfe0 15pt 15.7pt);font:500 13pt Caveat,'Bradley Hand',cursive;color:var(--plum);padding-top:1pt}
+#printSheet .ps-foot{margin-top:4pt;font:italic 400 7.5pt Fraunces,Georgia,serif;color:var(--mute);text-align:center}
+#printSheet .ps-foot b{font-style:normal;font-family:Inter,Arial;color:var(--navy)}
 </style>
 </head>
 <body>
@@ -737,31 +766,45 @@ $('#btnRefresh').onclick=async()=>{ await loadFeed(true); render(); toast(FEED?`
 /* ---------- print: one page ---------- */
 function buildPrint(){
   const t=today(), items=allItems();
+  const PC={john:'#2f6690',eliz:'#b24c6b',zach:'#2f6b43',family:'#a45f0f'};
+  const tag=w=>`<span class="tag" style="--tc:${PC[w]||PC.family}">${(PEOPLE[w]||PEOPLE.family).name}</span>`;
   const occ=occurrences(t,items).filter(passes);
   const acts=actionsList(items).filter(passes).filter(o=>!o.done).sort((a,b)=>(a.d||'9999').localeCompare(b.d||'9999'));
-  const seen=new Set(); const hi=[...occ.filter(o=>o.it.priority===3 && !o.done), ...acts.filter(o=>o.it.priority===3)].filter(o=>!seen.has(o.it.id)&&seen.add(o.it.id)).slice(0,8);
-  const r=(o,time=true)=>`<div class="ps-r"><span class="ps-b ${o.done?'x':''}"></span>${time?`<span class="ps-t">${o.t?fmtTime(o.t):'—'}</span>`:''}<span class="${o.it.priority===3?'ps-hi':''}">${esc(o.it.title)}</span><span class="ps-w">${(PEOPLE[o.it.who]||PEOPLE.family).name}</span></div>`;
+  const seen=new Set(); const hi=[...acts.filter(o=>o.it.priority===3), ...occ.filter(o=>o.it.priority===3 && !o.done)].filter(o=>!seen.has(o.it.id)&&seen.add(o.it.id)).slice(0,8);
+  const title=o=>{ const it=o.it, h=it.priority===3; const cls=[h?'ps-hi':'', it.cat==='work'?'ps-work':'', it.src==='routine'&&!h?'ps-rt':''].join(' ');
+    return `${h?'<span class="star">★</span>':''}<span class="${cls}">${esc(it.title)}</span>`; };
+  const r=(o,time=true)=>`<div class="ps-r"><span class="ps-b ${o.done?'x':''}"></span>${time?`<span class="ps-t">${o.t?fmtTime(o.t):'All day'}</span>`:''}${title(o)}${tag(o.it.who)}</div>`;
+  const parts=[['Morning',0,720],['Afternoon',720,1020],['Evening',1020,1440]];
+  let sched = occ.filter(o=>!o.t).map(o=>r(o)).join('');
+  for(const [n,a,b] of parts){ const g=occ.filter(o=>o.t&&toMin(o.t)>=a&&toMin(o.t)<b); if(g.length) sched+=`<div class="part">${n}<span>${g.length} item${g.length>1?'s':''}</span></div>${g.map(o=>r(o)).join('')}`; }
   let next3=''; for(let i=1;i<=3;i++){ const d=addDays(t,i); const l=occurrences(d,items).filter(passes).filter(o=>o.it.src!=='routine'); const dl=acts.filter(o=>o.d===d);
-    next3+=`<div class="ps-day">${fmtDay(d)}</div>${dl.map(o=>`<div class="ps-r"><span class="ps-b"></span><b>Due:</b>&nbsp;${esc(o.it.title)}</div>`).join('')}${l.map(o=>r(o)).join('')||(!dl.length?'<div class="ps-r" style="color:#777">Routines only</div>':'')}`; }
-  const weeks = acts.filter(o=>o.d && diffDays(t,o.d)>=0 && diffDays(t,o.d)<=28);
+    next3+=`<div class="ps-day">${parseYMD(d).toLocaleDateString('en-US',{weekday:'long',month:'short',day:'numeric'})}</div>${dl.map(o=>`<div class="ps-r"><span class="ps-b"></span><span class="due">Due</span> ${title(o)}${tag(o.it.who)}</div>`).join('')}${l.map(o=>r(o)).join('')||(!dl.length?'<div class="ps-r quiet">Just the usual routines</div>':'')}`; }
   const later=[]; for(let i=4;i<=28;i++){ const d=addDays(t,i); occurrences(d,items).filter(passes).filter(o=>o.it.src!=='routine' && !o.it.rep).forEach(o=>later.push(o)); }
+  const dls=[...acts.filter(o=>o.d && diffDays(t,o.d)>3 && diffDays(t,o.d)<=28).map(o=>({o,due:true})), ...later.map(o=>({o,due:false}))].sort((a,b)=>a.o.d.localeCompare(b.o.d));
   const overdue = acts.filter(o=>o.d && o.d<t);
+  const nodate = acts.filter(o=>!o.d);
+  const doneN=occ.filter(o=>o.done).length;
   $('#printSheet').innerHTML = `
-    <div class="ps-head"><h1>Homnick Family · ${fmtDay(t,true)}</h1><div>Printed ${new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})}${FEED?`<br>Calendars updated ${ago(FEED.generated)}`:''}</div></div>
+    <div class="pb"><div><div class="kick">The Homnick Family · Daily Plan</div><h1>${parseYMD(t).toLocaleDateString('en-US',{weekday:'long'})}, <em>${parseYMD(t).toLocaleDateString('en-US',{month:'long',day:'numeric'})}</em></h1></div>
+      <div class="meta"><b>${occ.length} on today's list${doneN?` · ${doneN} done`:''}</b>Printed ${new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit'})}${FEED?` · calendars updated ${ago(FEED.generated)}`:''}</div></div>
+    <div class="legend">${Object.entries(PEOPLE).map(([k,p])=>`<span><span class="tag" style="--tc:${PC[k]}">${p.name}</span></span>`).join('')}<span><span class="star">★</span>&nbsp;<b>high priority</b></span><span><i>italic = work</i></span></div>
     <div class="ps-cols"><div>
-      <div class="ps"><h2>Today's schedule</h2>${occ.map(o=>r(o)).join('')||'<div>Nothing scheduled</div>'}</div>
+      ${hi.length?`<div class="ps s-pri"><h2>Top Priorities <small>do these first</small></h2><div class="in">${hi.map(o=>`<div class="ps-r"><span class="ps-b"></span>${o.action&&o.d?`<span class="due">${diffDays(t,o.d)<=0?'Today':parseYMD(o.d).toLocaleDateString('en-US',{month:'short',day:'numeric'})}</span> `:o.t?`<span class="ps-t">${fmtTime(o.t)}</span>`:''}${title(o)}${tag(o.it.who)}</div>`).join('')}</div></div>`:''}
+      ${overdue.length?`<div class="ps s-over"><h2>Overdue <small>catch up</small></h2><div class="in">${overdue.map(o=>`<div class="ps-r"><span class="ps-b"></span><b>${esc(o.it.title)}</b>${tag(o.it.who)}</div>`).join('')}</div></div>`:''}
+      <div class="ps s-today"><h2>Today's Schedule <small>check it off</small></h2><div class="in">${sched||'<div class="ps-r quiet">Nothing scheduled</div>'}</div></div>
+      <div class="ps s-note"><h2>Notes &amp; Reminders <small>jot it down</small></h2><div class="in"><div class="ps-note"></div></div></div>
     </div><div>
-      ${hi.length?`<div class="ps"><h2>Top priorities</h2>${hi.map(o=>r(o,false)).join('')}</div>`:''}
-      ${overdue.length?`<div class="ps"><h2>Overdue</h2>${overdue.map(o=>`<div class="ps-r"><span class="ps-b"></span><span class="ps-hi">${esc(o.it.title)}</span><span class="ps-w">${fmtDay(o.d)}</span></div>`).join('')}</div>`:''}
-      <div class="ps"><h2>Next 3 days</h2>${next3}</div>
-      <div class="ps"><h2>Deadlines &amp; plans — next 4 weeks</h2>${[...weeks.filter(o=>diffDays(t,o.d)>3).map(o=>({d:o.d,t:'Due: '+o.it.title,hi:o.it.priority===3})), ...later.map(o=>({d:o.d,t:(o.t?fmtTime(o.t)+' ':'')+o.it.title,hi:o.it.priority===3}))].sort((a,b)=>a.d.localeCompare(b.d)).map(x=>`<div class="ps-r"><span class="ps-t">${parseYMD(x.d).toLocaleDateString('en-US',{month:'short',day:'numeric'})}</span><span class="${x.hi?'ps-hi':''}">${esc(x.t)}</span></div>`).join('')||'<div>Nothing yet</div>'}</div>
-      <div class="ps"><h2>Notes</h2><div class="ps-note"></div></div>
+      <div class="ps s-next"><h2>Next Three Days <small>coming up</small></h2><div class="in">${next3}</div></div>
+      <div class="ps s-dl"><h2>On the Horizon <small>next 4 weeks</small></h2><div class="in">${dls.map(({o,due})=>{ const d=parseYMD(o.d); return `<div class="ps-r dl-r"><span class="db">${d.toLocaleDateString('en-US',{month:'short'})}<b>${d.getDate()}</b></span>${due?'<span class="due">Due</span> ':''}${o.t?`<i style="color:#6b665d">${fmtTime(o.t)}</i> `:''}${title(o)}${tag(o.it.who)}</div>`; }).join('')||'<div class="ps-r quiet">Nothing on the calendar yet</div>'}${nodate.length?`<div class="part" style="color:var(--amb);border-color:#ead2a6">Whenever there's time</div>${nodate.map(o=>`<div class="ps-r"><span class="ps-b"></span>${title(o)}${tag(o.it.who)}</div>`).join('')}`:''}</div></div>
     </div></div>
-    <div class="ps-foot">jhomnick.github.io/planner</div>`;
+    <div class="ps-foot"><i>Made with love for Elizabeth, John &amp; Zach</i> · <b>jhomnick.github.io/planner</b></div>`;
   // Shrink to fit exactly one letter page (10.1in printable height at 96px/in)
   const ps=$('#printSheet'); ps.style.zoom=1; ps.style.width=''; ps.style.display='block';
-  let z=1;
-  for(let i=0;i<4;i++){ const h=ps.getBoundingClientRect().height, maxH=10.1*96-12; if(h<=maxH) break; z=z*maxH/h*0.99; ps.style.zoom=z; ps.style.width=`calc(7.6in / ${z})`; }
+  // binary-search the largest zoom (≤1) whose rendered height fits one page
+  const maxH=10.1*96-10, fits=z=>{ ps.style.zoom=z; ps.style.width=`calc(7.6in / ${z})`; return ps.getBoundingClientRect().height<=maxH; };
+  let lo=0.4, up=1;
+  if(fits(1)) lo=1; else { for(let i=0;i<14;i++){ const m=(lo+up)/2; if(fits(m)) lo=m; else up=m; } }
+  fits(lo);
   ps.style.display='';
 }
 $('#btnPrint').onclick=()=>{ buildPrint(); window.print(); };
