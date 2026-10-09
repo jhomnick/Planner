@@ -2,3 +2,4 @@ feed.json
 *.png
 *.pdf
 __pycache__/
+*.zip
