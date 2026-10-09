@@ -267,7 +267,14 @@ dialog::backdrop{background:rgba(20,15,5,.45)}
 /* ================= CONFIG ================= */
 // Paste your Firebase web config here to sync check-offs and new items across the family's devices.
 // Leave null to keep everything on this device only.
-const FIREBASE_CONFIG = null;
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyDsqxpRD8V-sAqmfH13zMGemSVoftalBNc",
+  authDomain: "movienight-9fbc2.firebaseapp.com",
+  projectId: "movienight-9fbc2",
+  storageBucket: "movienight-9fbc2.firebasestorage.app",
+  messagingSenderId: "834985248719",
+  appId: "1:834985248719:web:6f3f4794ea469e37d974ba"
+}; // shared with Movie Nights; planner data lives under /planner/{space}/docs, encrypted
 const FEED_URL = 'feed.enc.json';
 const SALT_B64 = '3CkFdEBni/lU2OeJL3d7Hw==';
 const KDF_ITER = 250000;
